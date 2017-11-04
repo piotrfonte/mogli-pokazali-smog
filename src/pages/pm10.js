@@ -2,11 +2,11 @@ import React from "react";
 import { object } from "prop-types";
 import { flatMap } from "lodash";
 
-import Chart from "../partials/Chart";
+import PM10 from "../charts/pm10";
 
-const HomePage = ({ data }) => {
+const PM10Page = ({ data }) => {
   // console.log(data);
-  const dataset = flatMap(data.allData2016CoCsv.edges, item => {
+  const dataset = flatMap(data.allData2016Pm10Csv.edges, item => {
     // console.log(item);
     const key = {
       date: item.node.date,
@@ -16,52 +16,33 @@ const HomePage = ({ data }) => {
       MpKrakAlKras: Number(item.node.MpKrakAlKras),
       MpZakopaSien: Number(item.node.MpZakopaSien),
       MzWarMarszal: Number(item.node.MzWarMarszal),
-      PdBialWaszyn: Number(item.node.PdBialWaszyn),
+      PdBialWarsza: Number(item.node.PdBialWarsza),
       PkRzeszRejta: Number(item.node.PkRzeszRejta),
       PmGdaWyzwo03: Number(item.node.PmGdaWyzwo03),
-      SlKatoPlebA4: Number(item.node.SlKatoPlebA4),
+      SlKatoKossut: Number(item.node.SlKatoKossut),
       WmOlsPuszkin: Number(item.node.WmOlsPuszkin),
       WpPoznPolank: Number(item.node.WpPoznPolank),
-      ZpSzczPils02: Number(item.node.ZpSzczPils02)
+      ZpSzczLacz04: Number(item.node.ZpSzczLacz04)
     };
     return key;
   });
   return (
     <div>
       <h1>Mogli. Pokazali.</h1>
-      <Chart dataset={dataset} />
+      <hr />
+      <PM10 dataset={dataset} />
     </div>
   );
 };
 
-HomePage.propTypes = {
+PM10Page.propTypes = {
   data: object.isRequired
 };
 
-export default HomePage;
+export default PM10Page;
 
-export const HomePageQuery = graphql`
-  query HomePageQuery {
-    allData2016CoCsv {
-      edges {
-        node {
-          time
-          date
-          DsWrocWybCon
-          LdLodzGdansk
-          MpKrakAlKras
-          MpZakopaSien
-          MzWarMarszal
-          PdBialWaszyn
-          PkRzeszRejta
-          PmGdaWyzwo03
-          SlKatoPlebA4
-          WmOlsPuszkin
-          WpPoznPolank
-          ZpSzczPils02
-        }
-      }
-    }
+export const PM10Query = graphql`
+  query PM10Query {
     allData2016Pm10Csv {
       edges {
         node {
