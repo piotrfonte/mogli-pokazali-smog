@@ -5,16 +5,30 @@ import { flatMap } from "lodash";
 import Chart from "../partials/Chart";
 
 const HomePage = ({ data }) => {
-  const dataset = flatMap(data.allCo2016NCsv.edges, item => {
+  // console.log(data);
+  const dataset = flatMap(data.allData2016CoCsv.edges, item => {
+    // console.log(item);
     const key = {
+      date: item.node.date,
       time: item.node.time,
-      gda: Number(item.node.PmGdaPoWie01CO1g),
-      elb: Number(item.node.WmElbBazynskCO1g)
+      DsWrocWybCon: Number(item.node.DsWrocWybCon),
+      LdLodzGdansk: Number(item.node.LdLodzGdansk),
+      MpKrakAlKras: Number(item.node.MpKrakAlKras),
+      MpZakopaSien: Number(item.node.MpZakopaSien),
+      MzWarMarszal: Number(item.node.MzWarMarszal),
+      PdBialWaszyn: Number(item.node.PdBialWaszyn),
+      PkRzeszRejta: Number(item.node.PkRzeszRejta),
+      PmGdaWyzwo03: Number(item.node.PmGdaWyzwo03),
+      SlKatoPlebA4: Number(item.node.SlKatoPlebA4),
+      WmOlsPuszkin: Number(item.node.WmOlsPuszkin),
+      WpPoznPolank: Number(item.node.WpPoznPolank),
+      ZpSzczPils02: Number(item.node.ZpSzczPils02)
     };
     return key;
   });
   return (
     <div>
+      <h1>Mogli. Pokazali.</h1>
       <Chart dataset={dataset} />
     </div>
   );
@@ -28,12 +42,23 @@ export default HomePage;
 
 export const HomePageQuery = graphql`
   query HomePageQuery {
-    allCo2016NCsv {
+    allData2016CoCsv {
       edges {
         node {
           time
-          PmGdaPoWie01CO1g
-          WmElbBazynskCO1g
+          date
+          DsWrocWybCon
+          LdLodzGdansk
+          MpKrakAlKras
+          MpZakopaSien
+          MzWarMarszal
+          PdBialWaszyn
+          PkRzeszRejta
+          PmGdaWyzwo03
+          SlKatoPlebA4
+          WmOlsPuszkin
+          WpPoznPolank
+          ZpSzczPils02
         }
       }
     }

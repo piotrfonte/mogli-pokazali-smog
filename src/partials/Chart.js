@@ -5,22 +5,21 @@ import {
   Area,
   XAxis,
   YAxis,
-  Legend,
   CartesianGrid,
   Tooltip,
-  ResponsiveContainer,
-  ReferenceLine
+  Legend,
+  ResponsiveContainer
 } from "recharts";
 
 const Chart = props => {
+  // console.log(props.dataset);
   return (
     <div>
-      <h2>Porównanie poziomów CO w powietrzu — rok 2016 (Gdańsk vs. Elbląg)</h2>
-
+      <h2>CO</h2>
       <ResponsiveContainer width="100%" height={400}>
         <AreaChart
           data={props.dataset}
-          margin={{ top: 0, right: 0, left: 0, bottom: 0 }}
+          margin={{ top: 20, right: 20, left: 20, bottom: 20 }}
         >
           <defs>
             <linearGradient id="colorUv" x1="0" y1="0" x2="0" y2="1">
@@ -32,32 +31,19 @@ const Chart = props => {
               <stop offset="33%" stopColor="#82ca9d" stopOpacity={0.3} />
             </linearGradient>
           </defs>
-          <XAxis dataKey="time" />
-          <YAxis label="mg/m3" />
+          <XAxis dataKey="date" />
+          <YAxis label="mg/m3" type="number" />
           <Tooltip />
           <Legend />
-          <CartesianGrid strokeDasharray="3 3" />
-          <ReferenceLine
-            y={10}
-            label="Norm"
-            stroke="red"
-            strokeDasharray="3 3"
-          />
+          <CartesianGrid strokeDasharray="30 0" />
           <Area
-            type="monotone"
-            dataKey="gda"
-            stroke="#6c78af"
-            dot={{ r: 0 }}
-            fill="url(#colorPv)"
             activeDot={{ r: 10 }}
-          />
-          <Area
-            type="monotone"
-            dataKey="elb"
-            stroke="#54b794"
-            fill="url(#colorUv)"
+            dataKey="PmGdaWyzwo03"
             dot={{ r: 0 }}
-            activeDot={{ r: 10 }}
+            stroke="6c78af"
+            type="monotone"
+            // fill="url(#colorPv)"
+            fill="#68cdc4"
           />
         </AreaChart>
       </ResponsiveContainer>
