@@ -3,8 +3,6 @@ import { arrayOf, object } from "prop-types";
 import css from "styled-components";
 import {
   AreaChart,
-  LineChart,
-  Line,
   Area,
   XAxis,
   YAxis,
@@ -18,6 +16,7 @@ import { setSpace, styleText } from "../utils";
 import Copy from "../components/Copy";
 import Separator from "../components/Separator";
 import ComparisonChart from "../charts/comparisonChart";
+import SingleChart from "../charts/singleChart";
 
 const Visualisations = css.div`
   display: flex;
@@ -71,231 +70,123 @@ const CO = props => {
       <Visualisations>
         <Visualisation>
           <VisualisationTitle>Wrocław</VisualisationTitle>
-          <ResponsiveContainer width="100%" height={200}>
-            <AreaChart data={props.dataset}>
-              <XAxis dataKey="date" />
-              <YAxis label="mg/m3" type="number" domain={[0, 4]} />
-              <Tooltip />
-              <CartesianGrid strokeDasharray="30 0" />
-              <Area
-                activeDot={{ r: 10 }}
-                dataKey="DsWrocWybCon"
-                dot={{ r: 0 }}
-                stroke="#cc5151"
-                type="monotone"
-                fill="#cc5151"
-              />
-            </AreaChart>
-          </ResponsiveContainer>
+          <SingleChart
+            dataset={props.dataset}
+            domain={[0, 4]}
+            subset="DsWrocWybCon"
+            keyCol="#cc5151"
+            unit="mg/m3"
+          />
         </Visualisation>
         <Visualisation>
           <VisualisationTitle>Łódź</VisualisationTitle>
-          <ResponsiveContainer width="100%" height={200}>
-            <AreaChart data={props.dataset}>
-              <XAxis dataKey="date" />
-              <YAxis label="mg/m3" type="number" domain={[0, 4]} />
-              <Tooltip />
-              <CartesianGrid strokeDasharray="30 0" />
-              <Area
-                activeDot={{ r: 10 }}
-                dataKey="LdLodzGdansk"
-                dot={{ r: 0 }}
-                stroke="#52cccc"
-                type="monotone"
-                fill="#52cccc"
-              />
-            </AreaChart>
-          </ResponsiveContainer>
+          <SingleChart
+            dataset={props.dataset}
+            domain={[0, 4]}
+            subset="LdLodzGdansk"
+            keyCol="#52cccc"
+            unit="mg/m3"
+          />
         </Visualisation>
         <Visualisation>
           <VisualisationTitle>Kraków</VisualisationTitle>
-          <ResponsiveContainer width="100%" height={200}>
-            <AreaChart data={props.dataset}>
-              <XAxis dataKey="date" />
-              <YAxis label="mg/m3" type="number" domain={[0, 4]} />
-              <Tooltip />
-              <CartesianGrid strokeDasharray="30 0" />
-              <Area
-                activeDot={{ r: 10 }}
-                dataKey="MpKrakAlKras"
-                dot={{ r: 0 }}
-                stroke="#8ecc50"
-                type="monotone"
-                fill="#8ecc50"
-              />
-            </AreaChart>
-          </ResponsiveContainer>
+          <SingleChart
+            dataset={props.dataset}
+            domain={[0, 4]}
+            subset="MpKrakAlKras"
+            keyCol="#8ecc50"
+            unit="mg/m3"
+          />
         </Visualisation>
         <Visualisation>
           <VisualisationTitle>Zakopane</VisualisationTitle>
-          <ResponsiveContainer width="100%" height={200}>
-            <AreaChart data={props.dataset}>
-              <XAxis dataKey="date" />
-              <YAxis label="mg/m3" type="number" domain={[0, 4]} />
-              <Tooltip />
-              <CartesianGrid strokeDasharray="30 0" />
-              <Area
-                activeDot={{ r: 10 }}
-                dataKey="MpZakopaSien"
-                dot={{ r: 0 }}
-                stroke="#8e51cc"
-                type="monotone"
-                fill="#8e51cc"
-              />
-            </AreaChart>
-          </ResponsiveContainer>
+          <SingleChart
+            dataset={props.dataset}
+            domain={[0, 4]}
+            subset="MpZakopaSien"
+            keyCol="#8e51cc"
+            unit="mg/m3"
+          />
         </Visualisation>
         <Visualisation>
           <VisualisationTitle>Warszawa</VisualisationTitle>
-          <ResponsiveContainer width="100%" height={200}>
-            <AreaChart data={props.dataset}>
-              <XAxis dataKey="date" />
-              <YAxis label="mg/m3" type="number" domain={[0, 4]} />
-              <Tooltip />
-              <CartesianGrid strokeDasharray="30 0" />
-              <Area
-                activeDot={{ r: 10 }}
-                dataKey="MzWarMarszal"
-                dot={{ r: 0 }}
-                stroke="#cbad50"
-                type="monotone"
-                fill="#cbad50"
-              />
-            </AreaChart>
-          </ResponsiveContainer>
+          <SingleChart
+            dataset={props.dataset}
+            domain={[0, 4]}
+            subset="MzWarMarszal"
+            keyCol="#cbad50"
+            unit="mg/m3"
+          />
         </Visualisation>
         <Visualisation>
           <VisualisationTitle>Białystok</VisualisationTitle>
-          <ResponsiveContainer width="100%" height={200}>
-            <AreaChart data={props.dataset}>
-              <XAxis dataKey="date" />
-              <YAxis label="mg/m3" type="number" domain={[0, 4]} />
-              <Tooltip />
-              <CartesianGrid strokeDasharray="30 0" />
-              <Area
-                activeDot={{ r: 10 }}
-                dataKey="PdBialWaszyn"
-                dot={{ r: 0 }}
-                stroke="#337f46"
-                type="monotone"
-                fill="#337f46"
-              />
-            </AreaChart>
-          </ResponsiveContainer>
+          <SingleChart
+            dataset={props.dataset}
+            domain={[0, 4]}
+            subset="PdBialWaszyn"
+            keyCol="#337f46"
+            unit="mg/m3"
+          />
         </Visualisation>
         <Visualisation>
           <VisualisationTitle>Rzeszów</VisualisationTitle>
-          <ResponsiveContainer width="100%" height={200}>
-            <AreaChart data={props.dataset}>
-              <XAxis dataKey="date" />
-              <YAxis label="mg/m3" type="number" domain={[0, 4]} />
-              <Tooltip />
-              <CartesianGrid strokeDasharray="30 0" />
-              <Area
-                activeDot={{ r: 10 }}
-                dataKey="PkRzeszRejta"
-                dot={{ r: 0 }}
-                stroke="#5170cc"
-                type="monotone"
-                fill="#5170cc"
-              />
-            </AreaChart>
-          </ResponsiveContainer>
+          <SingleChart
+            dataset={props.dataset}
+            domain={[0, 4]}
+            subset="PkRzeszRejta"
+            keyCol="#5170cc"
+            unit="mg/m3"
+          />
         </Visualisation>
         <Visualisation>
           <VisualisationTitle>Gdańsk</VisualisationTitle>
-          <ResponsiveContainer width="100%" height={200}>
-            <AreaChart data={props.dataset}>
-              <XAxis dataKey="date" />
-              <YAxis label="mg/m3" type="number" domain={[0, 4]} />
-              <Tooltip />
-              <CartesianGrid strokeDasharray="30 0" />
-              <Area
-                activeDot={{ r: 10 }}
-                dataKey="PmGdaWyzwo03"
-                dot={{ r: 0 }}
-                stroke="#cb51ad"
-                type="monotone"
-                fill="#cb51ad"
-              />
-            </AreaChart>
-          </ResponsiveContainer>
+          <SingleChart
+            dataset={props.dataset}
+            domain={[0, 4]}
+            subset="PmGdaWyzwo03"
+            keyCol="#cb51ad"
+            unit="mg/m3"
+          />
         </Visualisation>
         <Visualisation>
           <VisualisationTitle>Katowice</VisualisationTitle>
-          <ResponsiveContainer width="100%" height={200}>
-            <AreaChart data={props.dataset}>
-              <XAxis dataKey="date" />
-              <YAxis label="mg/m3" type="number" domain={[0, 4]} />
-              <Tooltip />
-              <CartesianGrid strokeDasharray="30 0" />
-              <Area
-                activeDot={{ r: 10 }}
-                dataKey="SlKatoPlebA4"
-                dot={{ r: 0 }}
-                stroke="#757f33"
-                type="monotone"
-                fill="#757f33"
-              />
-            </AreaChart>
-          </ResponsiveContainer>
+          <SingleChart
+            dataset={props.dataset}
+            domain={[0, 4]}
+            subset="SlKatoPlebA4"
+            keyCol="#757f33"
+            unit="mg/m3"
+          />
         </Visualisation>
         <Visualisation>
           <VisualisationTitle>Olsztyn</VisualisationTitle>
-          <ResponsiveContainer width="100%" height={200}>
-            <AreaChart data={props.dataset}>
-              <XAxis dataKey="date" />
-              <YAxis label="mg/m3" type="number" domain={[0, 4]} />
-              <Tooltip />
-              <CartesianGrid strokeDasharray="30 0" />
-              <Area
-                activeDot={{ r: 10 }}
-                dataKey="WmOlsPuszkin"
-                dot={{ r: 0 }}
-                stroke="#7f4134"
-                type="monotone"
-                fill="#7f4134"
-              />
-            </AreaChart>
-          </ResponsiveContainer>
+          <SingleChart
+            dataset={props.dataset}
+            domain={[0, 4]}
+            subset="WmOlsPuszkin"
+            keyCol="#7f4134"
+            unit="mg/m3"
+          />
         </Visualisation>
         <Visualisation>
           <VisualisationTitle>Poznań</VisualisationTitle>
-          <ResponsiveContainer width="100%" height={200}>
-            <AreaChart data={props.dataset}>
-              <XAxis dataKey="date" />
-              <YAxis label="mg/m3" type="number" domain={[0, 4]} />
-              <Tooltip />
-              <CartesianGrid strokeDasharray="30 0" />
-              <Area
-                activeDot={{ r: 10 }}
-                dataKey="WpPoznPolank"
-                dot={{ r: 0 }}
-                stroke="#3c3380"
-                type="monotone"
-                fill="#3c3380"
-              />
-            </AreaChart>
-          </ResponsiveContainer>
+          <SingleChart
+            dataset={props.dataset}
+            domain={[0, 4]}
+            subset="WpPoznPolank"
+            keyCol="#3c3380"
+            unit="mg/m3"
+          />
         </Visualisation>
         <Visualisation>
           <VisualisationTitle>Szczecin</VisualisationTitle>
-          <ResponsiveContainer width="100%" height={200}>
-            <AreaChart data={props.dataset}>
-              <XAxis dataKey="date" />
-              <YAxis label="mg/m3" type="number" domain={[0, 4]} />
-              <Tooltip />
-              <CartesianGrid strokeDasharray="30 0" />
-              <Area
-                activeDot={{ r: 10 }}
-                dataKey="ZpSzczPils02"
-                dot={{ r: 0 }}
-                stroke="#75337f"
-                type="monotone"
-                fill="#75337f"
-              />
-            </AreaChart>
-          </ResponsiveContainer>
+          <SingleChart
+            dataset={props.dataset}
+            domain={[0, 4]}
+            subset="ZpSzczPils02"
+            keyCol="#75337f"
+            unit="mg/m3"
+          />
         </Visualisation>
       </Visualisations>
     </div>

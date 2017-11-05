@@ -1,5 +1,5 @@
 import React from "react";
-import { arrayOf, object, string } from "prop-types";
+import { arrayOf, number, object, string } from "prop-types";
 import {
   LineChart,
   Line,
@@ -10,8 +10,6 @@ import {
   Tooltip,
   ResponsiveContainer
 } from "recharts";
-
-import {} from "../utils";
 
 const ComparisonChart = ({
   dataset,
@@ -54,7 +52,7 @@ ComparisonChart.propTypes = {
   key1Col: string.isRequired,
   key2Col: string.isRequired,
   unit: string.isRequired,
-  domain: arrayOf(string).isRequired
+  domain: arrayOf(number).isRequired
 };
 
 export default ComparisonChart;
