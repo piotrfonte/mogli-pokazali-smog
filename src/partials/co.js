@@ -17,6 +17,7 @@ import { setSpace, styleText } from "../utils";
 
 import Copy from "../components/Copy";
 import Separator from "../components/Separator";
+import ComparisonChart from "../charts/comparisonChart";
 
 const Visualisations = css.div`
   display: flex;
@@ -50,28 +51,15 @@ const CO = props => {
 
       <Visualisations>
         <VisualisationTitle>Gdańsk vs. Kraków</VisualisationTitle>
-        <ResponsiveContainer width="100%" height={200}>
-          <LineChart data={props.dataset}>
-            <XAxis dataKey="date" />
-            <YAxis label="mg/m3" type="number" domain={[0, 4]} />
-            <Tooltip />
-            <CartesianGrid strokeDasharray="30 0" />
-            <Line
-              activeDot={{ r: 10 }}
-              dataKey="MpKrakAlKras"
-              dot={{ r: 0 }}
-              stroke="#8ecc50"
-              type="monotone"
-            />
-            <Line
-              activeDot={{ r: 10 }}
-              dataKey="PmGdaWyzwo03"
-              dot={{ r: 0 }}
-              stroke="#cb51ad"
-              type="monotone"
-            />
-          </LineChart>
-        </ResponsiveContainer>
+        <ComparisonChart
+          dataset={props.dataset}
+          domain={[0, 4]}
+          key1="MpKrakAlKras"
+          key1Col="#8ecc50"
+          key2="PmGdaWyzwo03"
+          key2Col="#cb51ad"
+          unit="mg/m3"
+        />
       </Visualisations>
 
       <Separator silent size="l" />
