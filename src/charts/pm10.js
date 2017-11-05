@@ -1,12 +1,14 @@
 import React from "react";
 import { arrayOf, object } from "prop-types";
 import css from "styled-components";
+import { filter, size, groupBy, forEach, omitBy, maxBy } from "lodash";
 import {
   AreaChart,
   LineChart,
   Line,
   Area,
   XAxis,
+  ReferenceLine,
   YAxis,
   CartesianGrid,
   Tooltip,
@@ -32,7 +34,18 @@ const Visualisation = css.div`
 `;
 
 const Chart = props => {
-  // console.log(props.dataset);
+  console.log(props.dataset);
+
+  const arr = props.dataset;
+  const countOverexposureDays = location =>
+    size(
+      filter(
+        groupBy(arr, o => o.date),
+        (value, key) =>
+          maxBy(value, o2 => o2[location])[location] > 50 ? key : null
+      )
+    );
+
   return (
     <div>
       <h2>Comparison PM10</h2>
@@ -60,6 +73,12 @@ const Chart = props => {
                 stroke="#cb51ad"
                 type="monotone"
               />
+              <ReferenceLine
+                y={50}
+                label="norma"
+                stroke="red"
+                strokeDasharray="3 3"
+              />
             </LineChart>
           </ResponsiveContainer>
         </Visualisations>
@@ -83,8 +102,15 @@ const Chart = props => {
                 type="monotone"
                 fill="#cc5151"
               />
+              <ReferenceLine
+                y={50}
+                label="norma"
+                stroke="red"
+                strokeDasharray="3 3"
+              />
             </AreaChart>
           </ResponsiveContainer>
+          Dni ponad normę: {countOverexposureDays("DsWrocWybCon")}
         </Visualisation>
         <Visualisation>
           <h3>Łódź</h3>
@@ -102,8 +128,15 @@ const Chart = props => {
                 type="monotone"
                 fill="#52cccc"
               />
+              <ReferenceLine
+                y={50}
+                label="norma"
+                stroke="red"
+                strokeDasharray="3 3"
+              />
             </AreaChart>
           </ResponsiveContainer>
+          Dni ponad normę: {countOverexposureDays("LdLodzGdansk")}
         </Visualisation>
         <Visualisation>
           <h3>Kraków</h3>
@@ -121,8 +154,15 @@ const Chart = props => {
                 type="monotone"
                 fill="#8ecc50"
               />
+              <ReferenceLine
+                y={50}
+                label="norma"
+                stroke="red"
+                strokeDasharray="3 3"
+              />
             </AreaChart>
           </ResponsiveContainer>
+          Dni ponad normę: {countOverexposureDays("MpKrakAlKras")}
         </Visualisation>
         <Visualisation>
           <h3>Zakopane</h3>
@@ -140,8 +180,15 @@ const Chart = props => {
                 type="monotone"
                 fill="#8e51cc"
               />
+              <ReferenceLine
+                y={50}
+                label="norma"
+                stroke="red"
+                strokeDasharray="3 3"
+              />
             </AreaChart>
           </ResponsiveContainer>
+          Dni ponad normę: {countOverexposureDays("MpZakopaSien")}
         </Visualisation>
         <Visualisation>
           <h3>Warszawa</h3>
@@ -159,8 +206,15 @@ const Chart = props => {
                 type="monotone"
                 fill="#cbad50"
               />
+              <ReferenceLine
+                y={50}
+                label="norma"
+                stroke="red"
+                strokeDasharray="3 3"
+              />
             </AreaChart>
           </ResponsiveContainer>
+          Dni ponad normę: {countOverexposureDays("MzWarMarszal")}
         </Visualisation>
         <Visualisation>
           <h3>Białystok</h3>
@@ -178,8 +232,15 @@ const Chart = props => {
                 type="monotone"
                 fill="#337f46"
               />
+              <ReferenceLine
+                y={50}
+                label="norma"
+                stroke="red"
+                strokeDasharray="3 3"
+              />
             </AreaChart>
           </ResponsiveContainer>
+          Dni ponad normę: {countOverexposureDays("PdBialWarsza")}
         </Visualisation>
         <Visualisation>
           <h3>Rzeszów</h3>
@@ -197,8 +258,15 @@ const Chart = props => {
                 type="monotone"
                 fill="#5170cc"
               />
+              <ReferenceLine
+                y={50}
+                label="norma"
+                stroke="red"
+                strokeDasharray="3 3"
+              />
             </AreaChart>
           </ResponsiveContainer>
+          Dni ponad normę: {countOverexposureDays("PkRzeszRejta")}
         </Visualisation>
         <Visualisation>
           <h3>Gdańsk</h3>
@@ -216,8 +284,15 @@ const Chart = props => {
                 type="monotone"
                 fill="#cb51ad"
               />
+              <ReferenceLine
+                y={50}
+                label="norma"
+                stroke="red"
+                strokeDasharray="3 3"
+              />
             </AreaChart>
           </ResponsiveContainer>
+          Dni ponad normę: {countOverexposureDays("PmGdaWyzwo03")}
         </Visualisation>
         <Visualisation>
           <h3>Katowice</h3>
@@ -235,8 +310,15 @@ const Chart = props => {
                 type="monotone"
                 fill="#757f33"
               />
+              <ReferenceLine
+                y={50}
+                label="norma"
+                stroke="red"
+                strokeDasharray="3 3"
+              />
             </AreaChart>
           </ResponsiveContainer>
+          Dni ponad normę: {countOverexposureDays("SlKatoKossut")}
         </Visualisation>
         <Visualisation>
           <h3>Olsztyn</h3>
@@ -254,8 +336,15 @@ const Chart = props => {
                 type="monotone"
                 fill="#7f4134"
               />
+              <ReferenceLine
+                y={50}
+                label="norma"
+                stroke="red"
+                strokeDasharray="3 3"
+              />
             </AreaChart>
           </ResponsiveContainer>
+          Dni ponad normę: {countOverexposureDays("WmOlsPuszkin")}
         </Visualisation>
         <Visualisation>
           <h3>Poznań</h3>
@@ -273,8 +362,15 @@ const Chart = props => {
                 type="monotone"
                 fill="#3c3380"
               />
+              <ReferenceLine
+                y={50}
+                label="norma"
+                stroke="red"
+                strokeDasharray="3 3"
+              />
             </AreaChart>
           </ResponsiveContainer>
+          Dni ponad normę: {countOverexposureDays("WpPoznPolank")}
         </Visualisation>
         <Visualisation>
           <h3>Szczecin</h3>
@@ -292,8 +388,15 @@ const Chart = props => {
                 type="monotone"
                 fill="#75337f"
               />
+              <ReferenceLine
+                y={50}
+                label="norma"
+                stroke="red"
+                strokeDasharray="3 3"
+              />
             </AreaChart>
           </ResponsiveContainer>
+          Dni ponad normę: {countOverexposureDays("ZpSzczLacz04")}
         </Visualisation>
       </Visualisations>
     </div>
