@@ -4,7 +4,7 @@
   "version": "1.0.0",
   "author": "Piotr Fedorczyk <piotr@piotrf.pl>",
   "dependencies": {
-    "gatsby": "^1.9.99",
+    "gatsby": "^1.9.100",
     "gatsby-cli": "^1.1.19",
     "gatsby-image": "^1.0.19",
     "gatsby-link": "^1.6.24",
