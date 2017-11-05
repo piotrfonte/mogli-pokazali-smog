@@ -7,10 +7,11 @@ import {
   YAxis,
   CartesianGrid,
   Tooltip,
-  ResponsiveContainer
+  ResponsiveContainer,
+  ReferenceLine
 } from "recharts";
 
-const SingleChart = ({ dataset, subset, keyCol, unit, domain }) => (
+const SingleChart = ({ dataset, subset, keyCol, unit, domain, baseVal }) => (
   <ResponsiveContainer width="100%" height={200}>
     <AreaChart data={dataset}>
       <XAxis dataKey="date" />
@@ -25,6 +26,14 @@ const SingleChart = ({ dataset, subset, keyCol, unit, domain }) => (
         stroke={keyCol}
         type="monotone"
       />
+      {baseVal ? (
+        <ReferenceLine
+          y={50}
+          label="norma"
+          stroke="red"
+          strokeDasharray="3 3"
+        />
+      ) : null}
     </AreaChart>
   </ResponsiveContainer>
 );
@@ -34,7 +43,12 @@ SingleChart.propTypes = {
   domain: arrayOf(number).isRequired,
   subset: string.isRequired,
   keyCol: string.isRequired,
-  unit: string.isRequired
+  unit: string.isRequired,
+  baseVal: number
+};
+
+SingleChart.defaultProps = {
+  baseVal: null
 };
 
 export default SingleChart;

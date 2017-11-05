@@ -18,6 +18,7 @@ import { setSpace, styleText } from "../utils";
 import Copy from "../components/Copy";
 import Separator from "../components/Separator";
 import ComparisonChart from "../charts/comparisonChart";
+import SingleChart from "../charts/singleChart";
 
 const Visualisations = css.div`
   display: flex;
@@ -78,28 +79,14 @@ const PM10 = props => {
       <Visualisations>
         <Visualisation>
           <VisualisationTitle>Wrocław</VisualisationTitle>
-          <ResponsiveContainer width="100%" height={200}>
-            <AreaChart data={props.dataset}>
-              <XAxis dataKey="date" />
-              <YAxis label="ug/m3" type="number" domain={[0, 400]} />
-              <Tooltip />
-              <CartesianGrid strokeDasharray="30 0" />
-              <Area
-                activeDot={{ r: 10 }}
-                dataKey="DsWrocWybCon"
-                dot={{ r: 0 }}
-                stroke="#cc5151"
-                type="monotone"
-                fill="#cc5151"
-              />
-              <ReferenceLine
-                y={50}
-                label="norma"
-                stroke="red"
-                strokeDasharray="3 3"
-              />
-            </AreaChart>
-          </ResponsiveContainer>
+          <SingleChart
+            dataset={props.dataset}
+            domain={[0, 400]}
+            subset="DsWrocWybCon"
+            keyCol="#cc5151"
+            unit="ug/m3"
+            baseVal={50}
+          />
           <Copy>
             <p className="txt4">
               Dni ponad normę: {countOverexposureDays("DsWrocWybCon")}
@@ -108,28 +95,14 @@ const PM10 = props => {
         </Visualisation>
         <Visualisation>
           <VisualisationTitle>Łódź</VisualisationTitle>
-          <ResponsiveContainer width="100%" height={200}>
-            <AreaChart data={props.dataset}>
-              <XAxis dataKey="date" />
-              <YAxis label="ug/m3" type="number" domain={[0, 400]} />
-              <Tooltip />
-              <CartesianGrid strokeDasharray="30 0" />
-              <Area
-                activeDot={{ r: 10 }}
-                dataKey="LdLodzGdansk"
-                dot={{ r: 0 }}
-                stroke="#52cccc"
-                type="monotone"
-                fill="#52cccc"
-              />
-              <ReferenceLine
-                y={50}
-                label="norma"
-                stroke="red"
-                strokeDasharray="3 3"
-              />
-            </AreaChart>
-          </ResponsiveContainer>
+          <SingleChart
+            dataset={props.dataset}
+            domain={[0, 400]}
+            subset="LdLodzGdansk"
+            keyCol="#52cccc"
+            unit="ug/m3"
+            baseVal={50}
+          />
           <Copy>
             <p className="txt4">
               Dni ponad normę: {countOverexposureDays("LdLodzGdansk")}
@@ -138,28 +111,14 @@ const PM10 = props => {
         </Visualisation>
         <Visualisation>
           <VisualisationTitle>Kraków</VisualisationTitle>
-          <ResponsiveContainer width="100%" height={200}>
-            <AreaChart data={props.dataset}>
-              <XAxis dataKey="date" />
-              <YAxis label="ug/m3" type="number" domain={[0, 400]} />
-              <Tooltip />
-              <CartesianGrid strokeDasharray="30 0" />
-              <Area
-                activeDot={{ r: 10 }}
-                dataKey="MpKrakAlKras"
-                dot={{ r: 0 }}
-                stroke="#8ecc50"
-                type="monotone"
-                fill="#8ecc50"
-              />
-              <ReferenceLine
-                y={50}
-                label="norma"
-                stroke="red"
-                strokeDasharray="3 3"
-              />
-            </AreaChart>
-          </ResponsiveContainer>
+          <SingleChart
+            dataset={props.dataset}
+            domain={[0, 400]}
+            subset="MpKrakAlKras"
+            keyCol="#8ecc50"
+            unit="ug/m3"
+            baseVal={50}
+          />
           <Copy>
             <p className="txt4">
               Dni ponad normę: {countOverexposureDays("MpKrakAlKras")}
@@ -168,28 +127,14 @@ const PM10 = props => {
         </Visualisation>
         <Visualisation>
           <VisualisationTitle>Zakopane</VisualisationTitle>
-          <ResponsiveContainer width="100%" height={200}>
-            <AreaChart data={props.dataset}>
-              <XAxis dataKey="date" />
-              <YAxis label="ug/m3" type="number" domain={[0, 400]} />
-              <Tooltip />
-              <CartesianGrid strokeDasharray="30 0" />
-              <Area
-                activeDot={{ r: 10 }}
-                dataKey="MpZakopaSien"
-                dot={{ r: 0 }}
-                stroke="#8e51cc"
-                type="monotone"
-                fill="#8e51cc"
-              />
-              <ReferenceLine
-                y={50}
-                label="norma"
-                stroke="red"
-                strokeDasharray="3 3"
-              />
-            </AreaChart>
-          </ResponsiveContainer>
+          <SingleChart
+            dataset={props.dataset}
+            domain={[0, 400]}
+            subset="MpZakopaSien"
+            keyCol="#8e51cc"
+            unit="ug/m3"
+            baseVal={50}
+          />
           <Copy>
             <p className="txt4">
               Dni ponad normę: {countOverexposureDays("MpZakopaSien")}
@@ -198,28 +143,14 @@ const PM10 = props => {
         </Visualisation>
         <Visualisation>
           <VisualisationTitle>Warszawa</VisualisationTitle>
-          <ResponsiveContainer width="100%" height={200}>
-            <AreaChart data={props.dataset}>
-              <XAxis dataKey="date" />
-              <YAxis label="ug/m3" type="number" domain={[0, 400]} />
-              <Tooltip />
-              <CartesianGrid strokeDasharray="30 0" />
-              <Area
-                activeDot={{ r: 10 }}
-                dataKey="MzWarMarszal"
-                dot={{ r: 0 }}
-                stroke="#cbad50"
-                type="monotone"
-                fill="#cbad50"
-              />
-              <ReferenceLine
-                y={50}
-                label="norma"
-                stroke="red"
-                strokeDasharray="3 3"
-              />
-            </AreaChart>
-          </ResponsiveContainer>
+          <SingleChart
+            dataset={props.dataset}
+            domain={[0, 400]}
+            subset="MzWarMarszal"
+            keyCol="#cbad50"
+            unit="ug/m3"
+            baseVal={50}
+          />
           <Copy>
             <p className="txt4">
               Dni ponad normę: {countOverexposureDays("MzWarMarszal")}
@@ -228,28 +159,14 @@ const PM10 = props => {
         </Visualisation>
         <Visualisation>
           <VisualisationTitle>Białystok</VisualisationTitle>
-          <ResponsiveContainer width="100%" height={200}>
-            <AreaChart data={props.dataset}>
-              <XAxis dataKey="date" />
-              <YAxis label="ug/m3" type="number" domain={[0, 400]} />
-              <Tooltip />
-              <CartesianGrid strokeDasharray="30 0" />
-              <Area
-                activeDot={{ r: 10 }}
-                dataKey="PdBialWarsza"
-                dot={{ r: 0 }}
-                stroke="#337f46"
-                type="monotone"
-                fill="#337f46"
-              />
-              <ReferenceLine
-                y={50}
-                label="norma"
-                stroke="red"
-                strokeDasharray="3 3"
-              />
-            </AreaChart>
-          </ResponsiveContainer>
+          <SingleChart
+            dataset={props.dataset}
+            domain={[0, 400]}
+            subset="PdBialWarsza"
+            keyCol="#337f46"
+            unit="ug/m3"
+            baseVal={50}
+          />
           <Copy>
             <p className="txt4">
               Dni ponad normę: {countOverexposureDays("PdBialWarsza")}
@@ -258,28 +175,14 @@ const PM10 = props => {
         </Visualisation>
         <Visualisation>
           <VisualisationTitle>Rzeszów</VisualisationTitle>
-          <ResponsiveContainer width="100%" height={200}>
-            <AreaChart data={props.dataset}>
-              <XAxis dataKey="date" />
-              <YAxis label="ug/m3" type="number" domain={[0, 400]} />
-              <Tooltip />
-              <CartesianGrid strokeDasharray="30 0" />
-              <Area
-                activeDot={{ r: 10 }}
-                dataKey="PkRzeszRejta"
-                dot={{ r: 0 }}
-                stroke="#5170cc"
-                type="monotone"
-                fill="#5170cc"
-              />
-              <ReferenceLine
-                y={50}
-                label="norma"
-                stroke="red"
-                strokeDasharray="3 3"
-              />
-            </AreaChart>
-          </ResponsiveContainer>
+          <SingleChart
+            dataset={props.dataset}
+            domain={[0, 400]}
+            subset="PkRzeszRejta"
+            keyCol="#5170cc"
+            unit="ug/m3"
+            baseVal={50}
+          />
           <Copy>
             <p className="txt4">
               Dni ponad normę: {countOverexposureDays("PkRzeszRejta")}
@@ -288,28 +191,14 @@ const PM10 = props => {
         </Visualisation>
         <Visualisation>
           <VisualisationTitle>Gdańsk</VisualisationTitle>
-          <ResponsiveContainer width="100%" height={200}>
-            <AreaChart data={props.dataset}>
-              <XAxis dataKey="date" />
-              <YAxis label="ug/m3" type="number" domain={[0, 400]} />
-              <Tooltip />
-              <CartesianGrid strokeDasharray="30 0" />
-              <Area
-                activeDot={{ r: 10 }}
-                dataKey="PmGdaWyzwo03"
-                dot={{ r: 0 }}
-                stroke="#cb51ad"
-                type="monotone"
-                fill="#cb51ad"
-              />
-              <ReferenceLine
-                y={50}
-                label="norma"
-                stroke="red"
-                strokeDasharray="3 3"
-              />
-            </AreaChart>
-          </ResponsiveContainer>
+          <SingleChart
+            dataset={props.dataset}
+            domain={[0, 400]}
+            subset="PmGdaWyzwo03"
+            keyCol="#cb51ad"
+            unit="ug/m3"
+            baseVal={50}
+          />
           <Copy>
             <p className="txt4">
               Dni ponad normę: {countOverexposureDays("PmGdaWyzwo03")}
@@ -318,28 +207,14 @@ const PM10 = props => {
         </Visualisation>
         <Visualisation>
           <VisualisationTitle>Katowice</VisualisationTitle>
-          <ResponsiveContainer width="100%" height={200}>
-            <AreaChart data={props.dataset}>
-              <XAxis dataKey="date" />
-              <YAxis label="ug/m3" type="number" domain={[0, 400]} />
-              <Tooltip />
-              <CartesianGrid strokeDasharray="30 0" />
-              <Area
-                activeDot={{ r: 10 }}
-                dataKey="SlKatoKossut"
-                dot={{ r: 0 }}
-                stroke="#757f33"
-                type="monotone"
-                fill="#757f33"
-              />
-              <ReferenceLine
-                y={50}
-                label="norma"
-                stroke="red"
-                strokeDasharray="3 3"
-              />
-            </AreaChart>
-          </ResponsiveContainer>
+          <SingleChart
+            dataset={props.dataset}
+            domain={[0, 400]}
+            subset="SlKatoKossut"
+            keyCol="#757f33"
+            unit="ug/m3"
+            baseVal={50}
+          />
           <Copy>
             <p className="txt4">
               Dni ponad normę: {countOverexposureDays("SlKatoKossut")}
@@ -348,28 +223,14 @@ const PM10 = props => {
         </Visualisation>
         <Visualisation>
           <VisualisationTitle>Olsztyn</VisualisationTitle>
-          <ResponsiveContainer width="100%" height={200}>
-            <AreaChart data={props.dataset}>
-              <XAxis dataKey="date" />
-              <YAxis label="ug/m3" type="number" domain={[0, 400]} />
-              <Tooltip />
-              <CartesianGrid strokeDasharray="30 0" />
-              <Area
-                activeDot={{ r: 10 }}
-                dataKey="WmOlsPuszkin"
-                dot={{ r: 0 }}
-                stroke="#7f4134"
-                type="monotone"
-                fill="#7f4134"
-              />
-              <ReferenceLine
-                y={50}
-                label="norma"
-                stroke="red"
-                strokeDasharray="3 3"
-              />
-            </AreaChart>
-          </ResponsiveContainer>
+          <SingleChart
+            dataset={props.dataset}
+            domain={[0, 400]}
+            subset="WmOlsPuszkin"
+            keyCol="#7f4134"
+            unit="ug/m3"
+            baseVal={50}
+          />
           <Copy>
             <p className="txt4">
               Dni ponad normę: {countOverexposureDays("WmOlsPuszkin")}
@@ -378,28 +239,14 @@ const PM10 = props => {
         </Visualisation>
         <Visualisation>
           <VisualisationTitle>Poznań</VisualisationTitle>
-          <ResponsiveContainer width="100%" height={200}>
-            <AreaChart data={props.dataset}>
-              <XAxis dataKey="date" />
-              <YAxis label="ug/m3" type="number" domain={[0, 400]} />
-              <Tooltip />
-              <CartesianGrid strokeDasharray="30 0" />
-              <Area
-                activeDot={{ r: 10 }}
-                dataKey="WpPoznPolank"
-                dot={{ r: 0 }}
-                stroke="#3c3380"
-                type="monotone"
-                fill="#3c3380"
-              />
-              <ReferenceLine
-                y={50}
-                label="norma"
-                stroke="red"
-                strokeDasharray="3 3"
-              />
-            </AreaChart>
-          </ResponsiveContainer>
+          <SingleChart
+            dataset={props.dataset}
+            domain={[0, 400]}
+            subset="WpPoznPolank"
+            keyCol="#3c3380"
+            unit="ug/m3"
+            baseVal={50}
+          />
           <Copy>
             <p className="txt4">
               Dni ponad normę: {countOverexposureDays("WpPoznPolank")}
@@ -408,28 +255,14 @@ const PM10 = props => {
         </Visualisation>
         <Visualisation>
           <VisualisationTitle>Szczecin</VisualisationTitle>
-          <ResponsiveContainer width="100%" height={200}>
-            <AreaChart data={props.dataset}>
-              <XAxis dataKey="date" />
-              <YAxis label="ug/m3" type="number" domain={[0, 400]} />
-              <Tooltip />
-              <CartesianGrid strokeDasharray="30 0" />
-              <Area
-                activeDot={{ r: 10 }}
-                dataKey="ZpSzczLacz04"
-                dot={{ r: 0 }}
-                stroke="#75337f"
-                type="monotone"
-                fill="#75337f"
-              />
-              <ReferenceLine
-                y={50}
-                label="norma"
-                stroke="red"
-                strokeDasharray="3 3"
-              />
-            </AreaChart>
-          </ResponsiveContainer>
+          <SingleChart
+            dataset={props.dataset}
+            domain={[0, 400]}
+            subset="ZpSzczLacz04"
+            keyCol="#75337f"
+            unit="ug/m3"
+            baseVal={50}
+          />
           <Copy>
             <p className="txt4">
               Dni ponad normę: {countOverexposureDays("ZpSzczLacz04")}
