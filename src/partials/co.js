@@ -13,7 +13,10 @@ import {
   ResponsiveContainer
 } from "recharts";
 
-import { setSpace } from "../utils";
+import { setSpace, styleText } from "../utils";
+
+import Copy from "../components/Copy";
+import Separator from "../components/Separator";
 
 const Visualisations = css.div`
   display: flex;
@@ -31,14 +34,22 @@ const Visualisation = css.div`
   position: relative;
 `;
 
-const Chart = props => {
+const VisualisationTitle = css.h3`
+  ${setSpace("mbm")};
+  ${styleText.h6};
+`;
+
+const CO = props => {
   // console.log(props.dataset);
   return (
     <div>
-      <h2> Comparison CO </h2>
+      <Copy>
+        <h2 className="h2"> Comparison CO </h2>
+      </Copy>
+      <Separator silent size="m" />
 
       <Visualisations>
-        <h3>Gdańsk vs. Kraków</h3>
+        <VisualisationTitle>Gdańsk vs. Kraków</VisualisationTitle>
         <ResponsiveContainer width="100%" height={200}>
           <LineChart data={props.dataset}>
             <XAxis dataKey="date" />
@@ -63,11 +74,15 @@ const Chart = props => {
         </ResponsiveContainer>
       </Visualisations>
 
-      <h2> Individual CO </h2>
+      <Separator silent size="l" />
+      <Copy>
+        <h2 className="h2">Individual CO</h2>
+      </Copy>
+      <Separator silent size="m" />
 
       <Visualisations>
         <Visualisation>
-          <h3>Wrocław</h3>
+          <VisualisationTitle>Wrocław</VisualisationTitle>
           <ResponsiveContainer width="100%" height={200}>
             <AreaChart data={props.dataset}>
               <XAxis dataKey="date" />
@@ -86,7 +101,7 @@ const Chart = props => {
           </ResponsiveContainer>
         </Visualisation>
         <Visualisation>
-          <h3>Łódź</h3>
+          <VisualisationTitle>Łódź</VisualisationTitle>
           <ResponsiveContainer width="100%" height={200}>
             <AreaChart data={props.dataset}>
               <XAxis dataKey="date" />
@@ -105,7 +120,7 @@ const Chart = props => {
           </ResponsiveContainer>
         </Visualisation>
         <Visualisation>
-          <h3>Kraków</h3>
+          <VisualisationTitle>Kraków</VisualisationTitle>
           <ResponsiveContainer width="100%" height={200}>
             <AreaChart data={props.dataset}>
               <XAxis dataKey="date" />
@@ -124,7 +139,7 @@ const Chart = props => {
           </ResponsiveContainer>
         </Visualisation>
         <Visualisation>
-          <h3>Zakopane</h3>
+          <VisualisationTitle>Zakopane</VisualisationTitle>
           <ResponsiveContainer width="100%" height={200}>
             <AreaChart data={props.dataset}>
               <XAxis dataKey="date" />
@@ -143,7 +158,7 @@ const Chart = props => {
           </ResponsiveContainer>
         </Visualisation>
         <Visualisation>
-          <h3>Warszawa</h3>
+          <VisualisationTitle>Warszawa</VisualisationTitle>
           <ResponsiveContainer width="100%" height={200}>
             <AreaChart data={props.dataset}>
               <XAxis dataKey="date" />
@@ -162,7 +177,7 @@ const Chart = props => {
           </ResponsiveContainer>
         </Visualisation>
         <Visualisation>
-          <h3>Białystok</h3>
+          <VisualisationTitle>Białystok</VisualisationTitle>
           <ResponsiveContainer width="100%" height={200}>
             <AreaChart data={props.dataset}>
               <XAxis dataKey="date" />
@@ -181,7 +196,7 @@ const Chart = props => {
           </ResponsiveContainer>
         </Visualisation>
         <Visualisation>
-          <h3>Rzeszów</h3>
+          <VisualisationTitle>Rzeszów</VisualisationTitle>
           <ResponsiveContainer width="100%" height={200}>
             <AreaChart data={props.dataset}>
               <XAxis dataKey="date" />
@@ -200,7 +215,7 @@ const Chart = props => {
           </ResponsiveContainer>
         </Visualisation>
         <Visualisation>
-          <h3>Gdańsk</h3>
+          <VisualisationTitle>Gdańsk</VisualisationTitle>
           <ResponsiveContainer width="100%" height={200}>
             <AreaChart data={props.dataset}>
               <XAxis dataKey="date" />
@@ -219,7 +234,7 @@ const Chart = props => {
           </ResponsiveContainer>
         </Visualisation>
         <Visualisation>
-          <h3>Katowice</h3>
+          <VisualisationTitle>Katowice</VisualisationTitle>
           <ResponsiveContainer width="100%" height={200}>
             <AreaChart data={props.dataset}>
               <XAxis dataKey="date" />
@@ -238,7 +253,7 @@ const Chart = props => {
           </ResponsiveContainer>
         </Visualisation>
         <Visualisation>
-          <h3>Olsztyn</h3>
+          <VisualisationTitle>Olsztyn</VisualisationTitle>
           <ResponsiveContainer width="100%" height={200}>
             <AreaChart data={props.dataset}>
               <XAxis dataKey="date" />
@@ -257,7 +272,7 @@ const Chart = props => {
           </ResponsiveContainer>
         </Visualisation>
         <Visualisation>
-          <h3>Poznań</h3>
+          <VisualisationTitle>Poznań</VisualisationTitle>
           <ResponsiveContainer width="100%" height={200}>
             <AreaChart data={props.dataset}>
               <XAxis dataKey="date" />
@@ -276,7 +291,7 @@ const Chart = props => {
           </ResponsiveContainer>
         </Visualisation>
         <Visualisation>
-          <h3>Szczecin</h3>
+          <VisualisationTitle>Szczecin</VisualisationTitle>
           <ResponsiveContainer width="100%" height={200}>
             <AreaChart data={props.dataset}>
               <XAxis dataKey="date" />
@@ -299,8 +314,8 @@ const Chart = props => {
   );
 };
 
-Chart.propTypes = {
+CO.propTypes = {
   dataset: arrayOf(object).isRequired
 };
 
-export default Chart;
+export default CO;

@@ -4,11 +4,11 @@ import { flatMap } from "lodash";
 
 import Page from "../components/Page";
 
-import PM10 from "../partials/pm10";
+import CO from "../partials/co";
 import Header from "../partials/header";
 
-const PM10Page = ({ data }) => {
-  const dataset = flatMap(data.allData2016Pm10Csv.edges, item => {
+const HomePage = ({ data }) => {
+  const dataset = flatMap(data.allData2016CoCsv.edges, item => {
     const key = {
       date: item.node.date,
       time: item.node.time,
@@ -17,33 +17,33 @@ const PM10Page = ({ data }) => {
       MpKrakAlKras: Number(item.node.MpKrakAlKras),
       MpZakopaSien: Number(item.node.MpZakopaSien),
       MzWarMarszal: Number(item.node.MzWarMarszal),
-      PdBialWarsza: Number(item.node.PdBialWarsza),
+      PdBialWaszyn: Number(item.node.PdBialWaszyn),
       PkRzeszRejta: Number(item.node.PkRzeszRejta),
       PmGdaWyzwo03: Number(item.node.PmGdaWyzwo03),
-      SlKatoKossut: Number(item.node.SlKatoKossut),
+      SlKatoPlebA4: Number(item.node.SlKatoPlebA4),
       WmOlsPuszkin: Number(item.node.WmOlsPuszkin),
       WpPoznPolank: Number(item.node.WpPoznPolank),
-      ZpSzczLacz04: Number(item.node.ZpSzczLacz04)
+      ZpSzczPils02: Number(item.node.ZpSzczPils02)
     };
     return key;
   });
   return (
     <Page>
       <Header />
-      <PM10 dataset={dataset} />
+      <CO dataset={dataset} />
     </Page>
   );
 };
 
-PM10Page.propTypes = {
+HomePage.propTypes = {
   data: object.isRequired
 };
 
-export default PM10Page;
+export default HomePage;
 
-export const PM10Query = graphql`
-  query PM10Query {
-    allData2016Pm10Csv {
+export const HomePageQuery = graphql`
+  query HomePageQuery {
+    allData2016CoCsv {
       edges {
         node {
           time
@@ -53,13 +53,13 @@ export const PM10Query = graphql`
           MpKrakAlKras
           MpZakopaSien
           MzWarMarszal
-          PdBialWarsza
+          PdBialWaszyn
           PkRzeszRejta
           PmGdaWyzwo03
-          SlKatoKossut
+          SlKatoPlebA4
           WmOlsPuszkin
           WpPoznPolank
-          ZpSzczLacz04
+          ZpSzczPils02
         }
       }
     }

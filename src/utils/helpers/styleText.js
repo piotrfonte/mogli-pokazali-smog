@@ -16,7 +16,7 @@ export const styleText = {
     display: block;
     font-family: ${font.mono};
     font-weight: 500;
-    word-spacing: -${track.x};
+    word-spacing: -${track.s};
   `,
   h3: `
     ${setType("l")};

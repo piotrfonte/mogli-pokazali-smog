@@ -1,7 +1,7 @@
 import React from "react";
 import { arrayOf, object } from "prop-types";
 import css from "styled-components";
-import { filter, size, groupBy, forEach, omitBy, maxBy } from "lodash";
+import { filter, size, groupBy, maxBy } from "lodash";
 import {
   AreaChart,
   LineChart,
@@ -15,7 +15,10 @@ import {
   ResponsiveContainer
 } from "recharts";
 
-import { setSpace } from "../utils";
+import { setSpace, styleText } from "../utils";
+
+import Copy from "../components/Copy";
+import Separator from "../components/Separator";
 
 const Visualisations = css.div`
   display: flex;
@@ -33,9 +36,12 @@ const Visualisation = css.div`
   position: relative;
 `;
 
-const Chart = props => {
-  console.log(props.dataset);
+const VisualisationTitle = css.h3`
+  ${setSpace("mbm")};
+  ${styleText.h6};
+`;
 
+const PM10 = props => {
   const arr = props.dataset;
   const countOverexposureDays = location =>
     size(
@@ -48,46 +54,50 @@ const Chart = props => {
 
   return (
     <div>
-      <h2>Comparison PM10</h2>
+      <Copy>
+        <h2 className="h2">Comparison PM10</h2>
+      </Copy>
+      <Separator silent size="m" />
 
-      {
-        <Visualisations>
-          <h3>Gdańsk vs. Kraków</h3>
-          <ResponsiveContainer width="100%" height={200}>
-            <LineChart data={props.dataset}>
-              <XAxis dataKey="date" />
-              <YAxis label="ug/m3" type="number" domain={[0, 400]} />
-              <Tooltip />
-              <CartesianGrid strokeDasharray="30 0" />
-              <Line
-                activeDot={{ r: 10 }}
-                dataKey="MpKrakAlKras"
-                dot={{ r: 0 }}
-                stroke="#8ecc50"
-                type="monotone"
-              />
-              <Line
-                activeDot={{ r: 10 }}
-                dataKey="PmGdaWyzwo03"
-                dot={{ r: 0 }}
-                stroke="#cb51ad"
-                type="monotone"
-              />
-              <ReferenceLine
-                y={50}
-                label="norma"
-                stroke="red"
-                strokeDasharray="3 3"
-              />
-            </LineChart>
-          </ResponsiveContainer>
-        </Visualisations>
-      }
-      <h2> Individual PM10 </h2>
+      <VisualisationTitle>Gdańsk vs. Kraków</VisualisationTitle>
+      <ResponsiveContainer width="100%" height={200}>
+        <LineChart data={props.dataset}>
+          <XAxis dataKey="date" />
+          <YAxis label="ug/m3" type="number" domain={[0, 400]} />
+          <Tooltip />
+          <CartesianGrid strokeDasharray="30 0" />
+          <Line
+            activeDot={{ r: 10 }}
+            dataKey="MpKrakAlKras"
+            dot={{ r: 0 }}
+            stroke="#8ecc50"
+            type="monotone"
+          />
+          <Line
+            activeDot={{ r: 10 }}
+            dataKey="PmGdaWyzwo03"
+            dot={{ r: 0 }}
+            stroke="#cb51ad"
+            type="monotone"
+          />
+          <ReferenceLine
+            y={50}
+            label="norma"
+            stroke="red"
+            strokeDasharray="3 3"
+          />
+        </LineChart>
+      </ResponsiveContainer>
+
+      <Separator silent size="l" />
+      <Copy>
+        <h2 className="h2">Individual PM10</h2>
+      </Copy>
+      <Separator silent size="m" />
 
       <Visualisations>
         <Visualisation>
-          <h3>Wrocław</h3>
+          <VisualisationTitle>Wrocław</VisualisationTitle>
           <ResponsiveContainer width="100%" height={200}>
             <AreaChart data={props.dataset}>
               <XAxis dataKey="date" />
@@ -110,10 +120,14 @@ const Chart = props => {
               />
             </AreaChart>
           </ResponsiveContainer>
-          Dni ponad normę: {countOverexposureDays("DsWrocWybCon")}
+          <Copy>
+            <p className="txt4">
+              Dni ponad normę: {countOverexposureDays("DsWrocWybCon")}
+            </p>
+          </Copy>
         </Visualisation>
         <Visualisation>
-          <h3>Łódź</h3>
+          <VisualisationTitle>Łódź</VisualisationTitle>
           <ResponsiveContainer width="100%" height={200}>
             <AreaChart data={props.dataset}>
               <XAxis dataKey="date" />
@@ -136,10 +150,14 @@ const Chart = props => {
               />
             </AreaChart>
           </ResponsiveContainer>
-          Dni ponad normę: {countOverexposureDays("LdLodzGdansk")}
+          <Copy>
+            <p className="txt4">
+              Dni ponad normę: {countOverexposureDays("LdLodzGdansk")}
+            </p>
+          </Copy>
         </Visualisation>
         <Visualisation>
-          <h3>Kraków</h3>
+          <VisualisationTitle>Kraków</VisualisationTitle>
           <ResponsiveContainer width="100%" height={200}>
             <AreaChart data={props.dataset}>
               <XAxis dataKey="date" />
@@ -162,10 +180,14 @@ const Chart = props => {
               />
             </AreaChart>
           </ResponsiveContainer>
-          Dni ponad normę: {countOverexposureDays("MpKrakAlKras")}
+          <Copy>
+            <p className="txt4">
+              Dni ponad normę: {countOverexposureDays("MpKrakAlKras")}
+            </p>
+          </Copy>
         </Visualisation>
         <Visualisation>
-          <h3>Zakopane</h3>
+          <VisualisationTitle>Zakopane</VisualisationTitle>
           <ResponsiveContainer width="100%" height={200}>
             <AreaChart data={props.dataset}>
               <XAxis dataKey="date" />
@@ -188,10 +210,14 @@ const Chart = props => {
               />
             </AreaChart>
           </ResponsiveContainer>
-          Dni ponad normę: {countOverexposureDays("MpZakopaSien")}
+          <Copy>
+            <p className="txt4">
+              Dni ponad normę: {countOverexposureDays("MpZakopaSien")}
+            </p>
+          </Copy>
         </Visualisation>
         <Visualisation>
-          <h3>Warszawa</h3>
+          <VisualisationTitle>Warszawa</VisualisationTitle>
           <ResponsiveContainer width="100%" height={200}>
             <AreaChart data={props.dataset}>
               <XAxis dataKey="date" />
@@ -214,10 +240,14 @@ const Chart = props => {
               />
             </AreaChart>
           </ResponsiveContainer>
-          Dni ponad normę: {countOverexposureDays("MzWarMarszal")}
+          <Copy>
+            <p className="txt4">
+              Dni ponad normę: {countOverexposureDays("MzWarMarszal")}
+            </p>
+          </Copy>
         </Visualisation>
         <Visualisation>
-          <h3>Białystok</h3>
+          <VisualisationTitle>Białystok</VisualisationTitle>
           <ResponsiveContainer width="100%" height={200}>
             <AreaChart data={props.dataset}>
               <XAxis dataKey="date" />
@@ -240,10 +270,14 @@ const Chart = props => {
               />
             </AreaChart>
           </ResponsiveContainer>
-          Dni ponad normę: {countOverexposureDays("PdBialWarsza")}
+          <Copy>
+            <p className="txt4">
+              Dni ponad normę: {countOverexposureDays("PdBialWarsza")}
+            </p>
+          </Copy>
         </Visualisation>
         <Visualisation>
-          <h3>Rzeszów</h3>
+          <VisualisationTitle>Rzeszów</VisualisationTitle>
           <ResponsiveContainer width="100%" height={200}>
             <AreaChart data={props.dataset}>
               <XAxis dataKey="date" />
@@ -266,10 +300,14 @@ const Chart = props => {
               />
             </AreaChart>
           </ResponsiveContainer>
-          Dni ponad normę: {countOverexposureDays("PkRzeszRejta")}
+          <Copy>
+            <p className="txt4">
+              Dni ponad normę: {countOverexposureDays("PkRzeszRejta")}
+            </p>
+          </Copy>
         </Visualisation>
         <Visualisation>
-          <h3>Gdańsk</h3>
+          <VisualisationTitle>Gdańsk</VisualisationTitle>
           <ResponsiveContainer width="100%" height={200}>
             <AreaChart data={props.dataset}>
               <XAxis dataKey="date" />
@@ -292,10 +330,14 @@ const Chart = props => {
               />
             </AreaChart>
           </ResponsiveContainer>
-          Dni ponad normę: {countOverexposureDays("PmGdaWyzwo03")}
+          <Copy>
+            <p className="txt4">
+              Dni ponad normę: {countOverexposureDays("PmGdaWyzwo03")}
+            </p>
+          </Copy>
         </Visualisation>
         <Visualisation>
-          <h3>Katowice</h3>
+          <VisualisationTitle>Katowice</VisualisationTitle>
           <ResponsiveContainer width="100%" height={200}>
             <AreaChart data={props.dataset}>
               <XAxis dataKey="date" />
@@ -318,10 +360,14 @@ const Chart = props => {
               />
             </AreaChart>
           </ResponsiveContainer>
-          Dni ponad normę: {countOverexposureDays("SlKatoKossut")}
+          <Copy>
+            <p className="txt4">
+              Dni ponad normę: {countOverexposureDays("SlKatoKossut")}
+            </p>
+          </Copy>
         </Visualisation>
         <Visualisation>
-          <h3>Olsztyn</h3>
+          <VisualisationTitle>Olsztyn</VisualisationTitle>
           <ResponsiveContainer width="100%" height={200}>
             <AreaChart data={props.dataset}>
               <XAxis dataKey="date" />
@@ -344,10 +390,14 @@ const Chart = props => {
               />
             </AreaChart>
           </ResponsiveContainer>
-          Dni ponad normę: {countOverexposureDays("WmOlsPuszkin")}
+          <Copy>
+            <p className="txt4">
+              Dni ponad normę: {countOverexposureDays("WmOlsPuszkin")}
+            </p>
+          </Copy>
         </Visualisation>
         <Visualisation>
-          <h3>Poznań</h3>
+          <VisualisationTitle>Poznań</VisualisationTitle>
           <ResponsiveContainer width="100%" height={200}>
             <AreaChart data={props.dataset}>
               <XAxis dataKey="date" />
@@ -370,10 +420,14 @@ const Chart = props => {
               />
             </AreaChart>
           </ResponsiveContainer>
-          Dni ponad normę: {countOverexposureDays("WpPoznPolank")}
+          <Copy>
+            <p className="txt4">
+              Dni ponad normę: {countOverexposureDays("WpPoznPolank")}
+            </p>
+          </Copy>
         </Visualisation>
         <Visualisation>
-          <h3>Szczecin</h3>
+          <VisualisationTitle>Szczecin</VisualisationTitle>
           <ResponsiveContainer width="100%" height={200}>
             <AreaChart data={props.dataset}>
               <XAxis dataKey="date" />
@@ -396,15 +450,19 @@ const Chart = props => {
               />
             </AreaChart>
           </ResponsiveContainer>
-          Dni ponad normę: {countOverexposureDays("ZpSzczLacz04")}
+          <Copy>
+            <p className="txt4">
+              Dni ponad normę: {countOverexposureDays("ZpSzczLacz04")}
+            </p>
+          </Copy>
         </Visualisation>
       </Visualisations>
     </div>
   );
 };
 
-Chart.propTypes = {
+PM10.propTypes = {
   dataset: arrayOf(object).isRequired
 };
 
-export default Chart;
+export default PM10;

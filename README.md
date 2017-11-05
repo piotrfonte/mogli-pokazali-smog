@@ -1,6 +1,6 @@
 # mogli-pokazali-smog
 
-PM10
+PM10 – norma: 50μg/m3
 SO2
 NO2
 CO
