@@ -53,7 +53,7 @@ const SO2 = props => {
       <ComparisonChart
         dataset={props.dataset}
         domain={[0, 150]}
-        key1="MpKrakBujaka"
+        key1="MpKrakBujaka" // todo: choose station
         key1Col="#8ecc50"
         key2="PmGdaWyzwo03"
         key2Col="#cb51ad"
@@ -136,7 +136,7 @@ const SO2 = props => {
           <SingleChart
             dataset={props.dataset}
             domain={[0, 150]}
-            subset="MzWarKondrat"
+            subset="MzWarKondrat" // todo: choose station
             keyCol="#cbad50"
             unit="ug/m3"
             baseVal={50}
@@ -251,7 +251,7 @@ const SO2 = props => {
             subset="ZpSzczPils02"
             keyCol="#75337f"
             unit="ug/m3"
-            baseVal={50}
+            baseVal={50} // todo: set correct baseval
           />
           <Copy>
             <p className="txt4">
