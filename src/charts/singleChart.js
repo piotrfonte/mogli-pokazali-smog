@@ -28,7 +28,7 @@ const SingleChart = ({ dataset, subset, keyCol, unit, domain, baseVal }) => (
       />
       {baseVal ? (
         <ReferenceLine
-          y={50}
+          y={baseVal}
           label="norma"
           stroke="red"
           strokeDasharray="3 3"

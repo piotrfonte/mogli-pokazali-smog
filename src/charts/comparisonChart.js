@@ -12,13 +12,14 @@ import {
 } from "recharts";
 
 const ComparisonChart = ({
+  baseVal,
   dataset,
+  domain,
   key1,
-  key2,
   key1Col,
+  key2,
   key2Col,
-  unit,
-  domain
+  unit
 }) => (
   <ResponsiveContainer width="100%" height={200}>
     <LineChart data={dataset}>
@@ -40,19 +41,31 @@ const ComparisonChart = ({
         stroke={key2Col}
         type="monotone"
       />
-      <ReferenceLine y={50} label="norma" stroke="red" strokeDasharray="3 3" />
+      {baseVal ? (
+        <ReferenceLine
+          y={baseVal}
+          label="norma"
+          stroke="red"
+          strokeDasharray="3 3"
+        />
+      ) : null}
     </LineChart>
   </ResponsiveContainer>
 );
 
 ComparisonChart.propTypes = {
+  baseVal: number,
   dataset: arrayOf(object).isRequired,
+  domain: arrayOf(number).isRequired,
   key1: string.isRequired,
-  key2: string.isRequired,
   key1Col: string.isRequired,
+  key2: string.isRequired,
   key2Col: string.isRequired,
-  unit: string.isRequired,
-  domain: arrayOf(number).isRequired
+  unit: string.isRequired
+};
+
+ComparisonChart.defaultProps = {
+  baseVal: null
 };
 
 export default ComparisonChart;

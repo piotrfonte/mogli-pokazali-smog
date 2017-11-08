@@ -8,7 +8,8 @@ import Header from "../partials/header";
 const HomePage = () => (
   <Page>
     <Header />
-    <Link to="/pm10/">PM10</Link> <Link to="/co/">CO</Link>
+    <Link to="/pm10/">PM10</Link> <Link to="/co/">CO</Link>{" "}
+    <Link to="/pm25/">PM2.5</Link>
   </Page>
 );
 

@@ -1,17 +1,7 @@
+import css from "styled-components";
 import React from "react";
 import { arrayOf, object } from "prop-types";
-import css from "styled-components";
 import { filter, size, groupBy, maxBy } from "lodash";
-import {
-  AreaChart,
-  Area,
-  XAxis,
-  ReferenceLine,
-  YAxis,
-  CartesianGrid,
-  Tooltip,
-  ResponsiveContainer
-} from "recharts";
 
 import { setSpace, styleText } from "../utils";
 
