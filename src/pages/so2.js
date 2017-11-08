@@ -8,7 +8,6 @@ import SO2 from "../partials/so2";
 import Header from "../partials/header";
 
 const SO2Page = ({ data }) => {
-  console.log(data);
   const dataset = flatMap(data.allData2016So2Csv.edges, item => {
     const key = {
       date: item.node.date,
