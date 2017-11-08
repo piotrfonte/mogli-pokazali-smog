@@ -19,7 +19,7 @@ const Header = () => (
       </Link>
       <Separator size="s" silent />
       <Link to="/pm10/">PM10</Link> <Link to="/co/">CO</Link>{" "}
-      <Link to="/pm25/">PM2.5</Link>
+      <Link to="/pm25/">PM2.5</Link> <Link to="/so2/">SO2</Link>
     </Copy>
     <Separator size="s" silent />
   </HeaderEl>
